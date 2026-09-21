@@ -1,0 +1,26 @@
+--- ../front-2-tileflow.mlir
++++ front-2-annotated.mlir
+@@ -20,7 +20,7 @@
+         %8 = affine.apply affine_map<(d0) -> (d0 mod 32)>(%arg6)
+         tileplan.shard_for (%arg7) in (%c16_1) axis <row> {
+           %9 = tileflow.transfer %1 core_dims(%arg2, %arg7, %arg6, %arg2, %arg3) core_symbols() core_map affine_map<(d0, d1, d2, d3, d4) -> ((d3 floordiv 10) * 10 + d1 floordiv 16 + d0, (d4 floordiv 10) * 10 + (d2 floordiv 32) floordiv 16)> tile_dims(%arg2, %arg7, %arg6) tile_symbols() tile_map affine_map<(d0, d1, d2) -> (d1 mod 16, (d2 floordiv 32) mod 16)> core_boundary in_bounds tile_boundary in_bounds : !tileplan.shard_view -> !d2mtile.tile<bf16>
+-          %10 = tileflow.broadcast %9 kind col from(%6) : !d2mtile.tile<bf16> -> !d2mtile.tile<bf16>
++          %10 = tileflow.broadcast %9 kind col from(%6) {tileflow.predication_target = 0 : i64} : !d2mtile.tile<bf16> -> !d2mtile.tile<bf16>
+           %11 = d2mtile.binary tile_mul %10, %7 -> "source_ssa" : !d2mtile.tile<bf16>
+           %12 = affine.apply affine_map<(d0, d1, d2) -> (-d0 + (d1 * 16 + d2) * 32 - 1)>(%arg6, %arg2, %arg7)
+           %13 = affine.apply affine_map<(d0, d1, d2) -> (-d0 + (d1 * 16 + d2) * 32 - 1)>(%arg6, %arg2, %arg7)
+@@ -33,12 +33,12 @@
+             %19 = d2mtile.binary tile_sub %17, %18 -> "source_ssa" : !d2mtile.tile<bf16>
+             %20 = affine.apply affine_map<(d0, d1, d2) -> (-d0 + (d1 * 16 + d2) * 32)>(%arg6, %arg3, %arg8)
+             %21 = tileflow.col_mask symbols(%20) set affine_set<(d0)[s0] : (d0 + s0 >= 0)> invert : !tileflow.mask<bf16>
+-            %22 = tileflow.masked_overlay %19 with %17 active(%14, %21) source_map affine_map<(d0, d1) -> (d0, d1)> symbols() : !d2mtile.tile<bf16>
++            %22 = tileflow.masked_overlay %19 with %17 active(%14, %21) source_map affine_map<(d0, d1) -> (d0, d1)> symbols() {tileflow.predication = [#tileflow.predication<mask = 0, target = 0>]} : !d2mtile.tile<bf16>
+             tileplan.write %22, %1[%arg7, %arg8] : !d2mtile.tile<bf16>, !tileplan.shard_view
+           }
+         }
+       }
+-    }
++    } {task.streaming_granularity = #task.streaming_granularity<row>}
+   }
+   return
+ }

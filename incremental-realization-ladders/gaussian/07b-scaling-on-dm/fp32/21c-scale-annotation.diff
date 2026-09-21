@@ -1,0 +1,11 @@
+--- front-2-fragment-annotated.mlir
++++ front-2-scale-annotated.mlir
+@@ -45,7 +45,7 @@
+               %18 = tileflow.mask_fill %10 active(%17 : !tileflow.mask<f32>) policy zero {tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<f32> -> !d2mtile.tile<f32>
+               %19 = tileflow.col_mask symbols(%16) set #set : !tileflow.mask<f32>
+               %20 = tileflow.mask_fill %14 active(%19 : !tileflow.mask<f32>) policy zero {tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<f32> -> !d2mtile.tile<f32>
+-              %21 = d2mtile.binary tile_mul %18, %7 -> "source_ssa" : !d2mtile.tile<f32>
++              %21 = d2mtile.binary tile_mul %18, %7 -> "source_ssa" {tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<f32>
+               %22 = d2mtile.binary tile_mul %21, %20 -> "source_ssa" : !d2mtile.tile<f32>
+               %23 = d2mtile.binary tile_sub %15, %22 -> "source_ssa" : !d2mtile.tile<f32>
+               tileplan.write %23, %1[%arg7, %arg8] : !d2mtile.tile<f32>, !tileplan.shard_view

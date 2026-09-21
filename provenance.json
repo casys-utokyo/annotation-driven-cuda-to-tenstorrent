@@ -1,0 +1,313 @@
+{
+  "format_version": 2,
+  "entries": [
+    {
+      "artifact_path": "shared-inputs/gaussian-bf16",
+      "kind": "shared-input"
+    },
+    {
+      "artifact_path": "shared-inputs/gaussian-fp32",
+      "kind": "shared-input"
+    },
+    {
+      "artifact_path": "shared-inputs/jacobi-2d-bf16",
+      "kind": "shared-input"
+    },
+    {
+      "artifact_path": "shared-inputs/jacobi-2d-fp32",
+      "kind": "shared-input"
+    },
+    {
+      "artifact_path": "shared-inputs/syrk-bf16",
+      "kind": "shared-input"
+    },
+    {
+      "artifact_path": "system_desc.ttsys",
+      "kind": "system-descriptor"
+    },
+    {
+      "artifact_path": "a100-hand-optimized",
+      "kind": "a100-baseline"
+    },
+    {
+      "artifact_path": "tools/lower",
+      "kind": "lowering-scripts"
+    },
+    {
+      "artifact_path": "cuda-sources",
+      "kind": "cuda-inputs"
+    },
+    {
+      "artifact_path": "tools/run",
+      "kind": "run-scripts"
+    },
+    {
+      "artifact_path": "tools/timing",
+      "kind": "harness"
+    },
+    {
+      "artifact_path": "tools/accuracy",
+      "kind": "harness"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/01-compute-select-baseline/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/01-compute-select-baseline/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/01-compute-select-baseline/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/01-compute-select-baseline/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/02-row-mask-sinking/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/02-row-mask-sinking/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/02-row-mask-sinking/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/02-row-mask-sinking/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/03-col-mask-sinking/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/03-col-mask-sinking/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/03-col-mask-sinking/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/03-col-mask-sinking/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/04-masks-on-dm/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/04-masks-on-dm/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/04-masks-on-dm/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/04-masks-on-dm/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/05-reciprocal-on-dm/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/05-reciprocal-on-dm/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/05-reciprocal-on-dm/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/05-reciprocal-on-dm/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/06-row-broadcast-on-compute/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/06-row-broadcast-on-compute/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/06-row-broadcast-on-compute/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/06-row-broadcast-on-compute/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/07a-col-broadcast-on-compute/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/07a-col-broadcast-on-compute/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/07a-col-broadcast-on-compute/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/07a-col-broadcast-on-compute/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/07b-scaling-on-dm/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/07b-scaling-on-dm/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/gaussian/07b-scaling-on-dm/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "gaussian/07b-scaling-on-dm/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/01-receiver-side-transpose/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/01-receiver-side-transpose/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/01-receiver-side-transpose/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/01-receiver-side-transpose/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/02-patch-level-transpose/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/02-patch-level-transpose/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/02-patch-level-transpose/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/02-patch-level-transpose/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/03-sender-side-transpose/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/03-sender-side-transpose/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/03-sender-side-transpose/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/03-sender-side-transpose/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/04-two-dm-lanes/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/04-two-dm-lanes/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/04-two-dm-lanes/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/04-two-dm-lanes/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/05-row-masks-on-dm/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/05-row-masks-on-dm/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/05-row-masks-on-dm/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/05-row-masks-on-dm/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/06-col-masks-on-dm/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/06-col-masks-on-dm/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/06-col-masks-on-dm/fp32",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/06-col-masks-on-dm/fp32"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/jacobi-2d/07-row-streaming/bf16",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "jacobi-2d/07-row-streaming/bf16"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/syrk/01-reduction-innermost",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "syrk/01-reduction-innermost"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/syrk/02-strip-mined-reduction",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "syrk/02-strip-mined-reduction"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/syrk/03-shard-wide-operand-reuse",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "syrk/03-shard-wide-operand-reuse"
+    },
+    {
+      "artifact_path": "incremental-realization-ladders/syrk/04-depth-two-delivery",
+      "kind": "incremental-realization-ladders",
+      "paper_name": "syrk/04-depth-two-delivery"
+    },
+    {
+      "artifact_path": "realization-interactions/gaussian-scaling-placement/01-bf16-row-broadcast/scaling-on-compute",
+      "kind": "realization-interactions",
+      "paper_name": "gaussian-scaling-placement/01-bf16-row-broadcast/scaling-on-compute"
+    },
+    {
+      "artifact_path": "realization-interactions/gaussian-scaling-placement/01-bf16-row-broadcast/scaling-on-dm",
+      "kind": "realization-interactions",
+      "paper_name": "gaussian-scaling-placement/01-bf16-row-broadcast/scaling-on-dm"
+    },
+    {
+      "artifact_path": "realization-interactions/gaussian-scaling-placement/02-fp32-row-broadcast/scaling-on-compute",
+      "kind": "realization-interactions",
+      "paper_name": "gaussian-scaling-placement/02-fp32-row-broadcast/scaling-on-compute"
+    },
+    {
+      "artifact_path": "realization-interactions/gaussian-scaling-placement/02-fp32-row-broadcast/scaling-on-dm",
+      "kind": "realization-interactions",
+      "paper_name": "gaussian-scaling-placement/02-fp32-row-broadcast/scaling-on-dm"
+    },
+    {
+      "artifact_path": "realization-interactions/gaussian-scaling-placement/03-fp32-column-broadcast/scaling-on-compute",
+      "kind": "realization-interactions",
+      "paper_name": "gaussian-scaling-placement/03-fp32-column-broadcast/scaling-on-compute"
+    },
+    {
+      "artifact_path": "realization-interactions/gaussian-scaling-placement/03-fp32-column-broadcast/scaling-on-dm",
+      "kind": "realization-interactions",
+      "paper_name": "gaussian-scaling-placement/03-fp32-column-broadcast/scaling-on-dm"
+    },
+    {
+      "artifact_path": "realization-interactions/jacobi-streaming-granularity/01-compute-mask-one-dm-lane/row-streaming",
+      "kind": "realization-interactions",
+      "paper_name": "jacobi-streaming-granularity/01-compute-mask-one-dm-lane/row-streaming"
+    },
+    {
+      "artifact_path": "realization-interactions/jacobi-streaming-granularity/01-compute-mask-one-dm-lane/column-streaming",
+      "kind": "realization-interactions",
+      "paper_name": "jacobi-streaming-granularity/01-compute-mask-one-dm-lane/column-streaming"
+    },
+    {
+      "artifact_path": "realization-interactions/jacobi-streaming-granularity/02-compute-mask-two-dm-lanes/row-streaming",
+      "kind": "realization-interactions",
+      "paper_name": "jacobi-streaming-granularity/02-compute-mask-two-dm-lanes/row-streaming"
+    },
+    {
+      "artifact_path": "realization-interactions/jacobi-streaming-granularity/02-compute-mask-two-dm-lanes/column-streaming",
+      "kind": "realization-interactions",
+      "paper_name": "jacobi-streaming-granularity/02-compute-mask-two-dm-lanes/column-streaming"
+    },
+    {
+      "artifact_path": "realization-interactions/jacobi-streaming-granularity/03-dm-mask-two-dm-lanes/row-streaming",
+      "kind": "realization-interactions",
+      "paper_name": "jacobi-streaming-granularity/03-dm-mask-two-dm-lanes/row-streaming"
+    },
+    {
+      "artifact_path": "realization-interactions/jacobi-streaming-granularity/03-dm-mask-two-dm-lanes/column-streaming",
+      "kind": "realization-interactions",
+      "paper_name": "jacobi-streaming-granularity/03-dm-mask-two-dm-lanes/column-streaming"
+    },
+    {
+      "artifact_path": "realization-interactions/syrk-dm-lane-assignment/01-per-output-tile/one-dm-lane",
+      "kind": "realization-interactions",
+      "paper_name": "syrk-dm-lane-assignment/01-per-output-tile/one-dm-lane"
+    },
+    {
+      "artifact_path": "realization-interactions/syrk-dm-lane-assignment/01-per-output-tile/two-dm-lanes",
+      "kind": "realization-interactions",
+      "paper_name": "syrk-dm-lane-assignment/01-per-output-tile/two-dm-lanes"
+    },
+    {
+      "artifact_path": "realization-interactions/syrk-dm-lane-assignment/02-per-output-shard/one-dm-lane",
+      "kind": "realization-interactions",
+      "paper_name": "syrk-dm-lane-assignment/02-per-output-shard/one-dm-lane"
+    },
+    {
+      "artifact_path": "realization-interactions/syrk-dm-lane-assignment/02-per-output-shard/two-dm-lanes",
+      "kind": "realization-interactions",
+      "paper_name": "syrk-dm-lane-assignment/02-per-output-shard/two-dm-lanes"
+    },
+    {
+      "artifact_path": "a100-device-resident-comparison/gaussian-fp32/blackhole-with-dram-l1",
+      "kind": "a100-device-resident-comparison",
+      "paper_name": "gaussian-fp32/blackhole-with-dram-l1"
+    },
+    {
+      "artifact_path": "a100-device-resident-comparison/jacobi-2d-fp32/blackhole-with-dram-l1",
+      "kind": "a100-device-resident-comparison",
+      "paper_name": "jacobi-2d-fp32/blackhole-with-dram-l1"
+    },
+    {
+      "artifact_path": "a100-device-resident-comparison/syrk-bf16/blackhole-with-dram-l1",
+      "kind": "a100-device-resident-comparison",
+      "paper_name": "syrk-bf16/blackhole-with-dram-l1"
+    }
+  ]
+}

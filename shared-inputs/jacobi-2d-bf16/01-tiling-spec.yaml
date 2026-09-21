@@ -1,0 +1,8 @@
+version: "0.5"
+kernel: {name: _Z15runJacobi2DCUDAiiPfS__driver}
+d2m_kernel:
+  elem_type: bf16
+  intent: {grid: [10, 10]}
+  tensors:
+    - {name: a, shape: [3200, 3200], role: inout, arg: 0}
+    - {name: b, shape: [3200, 3200], role: transient, arg: 1}

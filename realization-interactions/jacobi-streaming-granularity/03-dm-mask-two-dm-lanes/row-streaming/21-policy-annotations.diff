@@ -1,0 +1,41 @@
+--- front-2-tileflow.mlir
++++ front-2-semantic.mlir
+@@ -42,19 +42,19 @@
+               %7 = tileflow.transfer %1 core_dims(%arg2, %arg3, %arg7, %arg8, %arg2, %arg3) core_symbols() core_map #map1 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map2 core_boundary clamp tile_boundary clamp : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %8 = tileflow.local_read %1 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map3 tile_boundary in_bounds : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %9 = tileflow.roll %8 axis row by -1 : !d2mtile.tile<bf16>
+-              %10 = tileflow.masked_overlay %9 with %7 active(%2) source_map #map4 symbols() : !d2mtile.tile<bf16>
++              %10 = tileflow.masked_overlay %9 with %7 active(%2) source_map #map4 symbols() {tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<bf16>
+               %11 = tileflow.local_read %1 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map3 tile_boundary in_bounds : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %12 = tileflow.transfer %1 core_dims(%arg2, %arg3, %arg7, %arg8, %arg2, %arg3) core_symbols() core_map #map5 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map6 core_boundary clamp tile_boundary clamp : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %13 = tileflow.roll %11 axis row by 1 : !d2mtile.tile<bf16>
+-              %14 = tileflow.masked_overlay %13 with %12 active(%3) source_map #map7 symbols() : !d2mtile.tile<bf16>
++              %14 = tileflow.masked_overlay %13 with %12 active(%3) source_map #map7 symbols() {tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<bf16>
+               %15 = tileflow.local_read %1 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map3 tile_boundary in_bounds : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %16 = tileflow.transfer %1 core_dims(%arg2, %arg3, %arg7, %arg8, %arg2, %arg3) core_symbols() core_map #map8 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map9 core_boundary clamp tile_boundary clamp : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %17 = tileflow.roll %15 axis col by 1 : !d2mtile.tile<bf16>
+-              %18 = tileflow.masked_overlay %17 with %16 active(%4) source_map #map10 symbols() : !d2mtile.tile<bf16>
++              %18 = tileflow.masked_overlay %17 with %16 active(%4) source_map #map10 symbols() {tileflow.realization_basis = #tileflow.realization_basis<transposed>, tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<bf16>
+               %19 = tileflow.transfer %1 core_dims(%arg2, %arg3, %arg7, %arg8, %arg2, %arg3) core_symbols() core_map #map11 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map12 core_boundary clamp tile_boundary clamp : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %20 = tileflow.local_read %1 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map3 tile_boundary in_bounds : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %21 = tileflow.roll %20 axis col by -1 : !d2mtile.tile<bf16>
+-              %22 = tileflow.masked_overlay %21 with %19 active(%5) source_map #map13 symbols() : !d2mtile.tile<bf16>
++              %22 = tileflow.masked_overlay %21 with %19 active(%5) source_map #map13 symbols() {tileflow.realization_basis = #tileflow.realization_basis<transposed>, tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<bf16>
+               %23 = tileflow.local_read %1 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map3 tile_boundary in_bounds : !tileplan.shard_view -> !d2mtile.tile<bf16>
+               %24 = d2mtile.binary tile_add %23, %22 -> "source_ssa" : !d2mtile.tile<bf16>
+               %25 = d2mtile.binary tile_add %24, %18 -> "source_ssa" : !d2mtile.tile<bf16>
+@@ -76,12 +76,12 @@
+               %14 = affine.apply #map15(%arg3, %arg8)
+               %15 = tileflow.col_mask symbols(%13) set #set2 invert : !tileflow.mask<bf16>
+               %16 = tileflow.col_mask symbols(%14) set #set3 invert : !tileflow.mask<bf16>
+-              %17 = tileflow.masked_overlay %12 with %11 active(%9, %10, %15, %16) source_map #map symbols() : !d2mtile.tile<bf16>
++              %17 = tileflow.masked_overlay %12 with %11 active(%9, %10, %15, %16) source_map #map symbols() {tileflow.realization_engine = [#tileflow.engine_entry<mask = 0, engine = dm>, #tileflow.engine_entry<mask = 1, engine = dm>, #tileflow.engine_entry<mask = 2, engine = dm>, #tileflow.engine_entry<mask = 3, engine = dm>]} : !d2mtile.tile<bf16>
+               tileplan.write %17, %1[%arg7, %arg8] : !d2mtile.tile<bf16>, !tileplan.shard_view
+             }
+           }
+         }
+-      }
++      } {task.streaming_granularity = #task.streaming_granularity<row>}
+     }
+     return
+   }

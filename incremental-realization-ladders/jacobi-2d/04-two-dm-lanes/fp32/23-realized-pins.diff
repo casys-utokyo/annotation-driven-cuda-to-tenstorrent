@@ -1,0 +1,31 @@
+--- front-3-base.mlir
++++ front-3-realized.mlir
+@@ -124,8 +124,8 @@
+           } {tileplan.publish_persistent}
+           %38 = tileflow.frame_delivery %1 source_core(%7, %arg3) source_slice(%c9, %c0_9) shape(1, 10) : !tileplan.shard_view -> !tileflow.frame<!d2mtile.tile<f32>>
+           %39 = tileflow.frame_delivery %1 source_core(%9, %arg3) source_slice(%c0_11, %c0_12) shape(1, 10) : !tileplan.shard_view -> !tileflow.frame<!d2mtile.tile<f32>>
+-          %40 = tileflow.frame_delivery %2 source_core(%arg2, %11) source_slice(%c0_15, %c0_16) shape(10, 1) : !tileplan.l1_buffer -> !tileflow.frame<!d2mtile.tile<f32>>
+-          %41 = tileflow.frame_delivery %2 source_core(%arg2, %13) source_slice(%c0_19, %c9_20) shape(10, 1) : !tileplan.l1_buffer -> !tileflow.frame<!d2mtile.tile<f32>>
++          %40 = tileflow.frame_delivery %2 source_core(%arg2, %11) source_slice(%c0_15, %c0_16) shape(10, 1) {task.dm_lane = #task.engine<dm1>} : !tileplan.l1_buffer -> !tileflow.frame<!d2mtile.tile<f32>>
++          %41 = tileflow.frame_delivery %2 source_core(%arg2, %13) source_slice(%c0_19, %c9_20) shape(10, 1) {task.dm_lane = #task.engine<dm1>} : !tileplan.l1_buffer -> !tileflow.frame<!d2mtile.tile<f32>>
+           tileplan.shard_for (%arg7) in (%c10_1) axis <row> {
+             %42 = affine.apply #map2(%arg2, %arg7)
+             %43 = affine.apply #map3(%arg2, %arg7)
+@@ -186,7 +186,7 @@
+               %81 = tileflow.roll %74 axis row by 1 {tileflow.execution = "dm"} : !d2mtile.tile<f32>
+               %82 = tileflow.lane_copy %81 with %80 if(%4) axis row src_lane 0 dst_lane 31 {tileflow.overlay = #tileflow.overlay_realization<dm_copy>} : !d2mtile.tile<f32>
+               %83 = tileflow.local_read %2 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map8 tile_boundary in_bounds : !tileplan.l1_buffer -> !d2mtile.tile<f32>
+-              %84 = tileflow.roll %83 axis row by 1 {tileflow.execution = "dm"} : !d2mtile.tile<f32>
++              %84 = tileflow.roll %83 axis row by 1 {tileflow.execution = "dm", task.dm_lane = #task.engine<dm1>} : !d2mtile.tile<f32>
+               %85 = arith.cmpi sge, %arg8, %c9_34 : index
+               %86 = arith.cmpi slt, %arg8, %c10_35 : index
+               %87 = arith.andi %85, %86 : i1
+@@ -200,7 +200,7 @@
+               }
+               %90 = tileflow.lane_copy %84 with %89 if(%16) axis row src_lane 0 dst_lane 31 {tileflow.overlay = #tileflow.overlay_realization<dm_copy>} : !d2mtile.tile<f32>
+               %91 = tileflow.local_read %2 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map8 tile_boundary in_bounds : !tileplan.l1_buffer -> !d2mtile.tile<f32>
+-              %92 = tileflow.roll %91 axis row by -1 {tileflow.execution = "dm"} : !d2mtile.tile<f32>
++              %92 = tileflow.roll %91 axis row by -1 {tileflow.execution = "dm", task.dm_lane = #task.engine<dm1>} : !d2mtile.tile<f32>
+               %93 = arith.cmpi sge, %arg8, %c0_40 : index
+               %94 = arith.cmpi slt, %arg8, %c1_41 : index
+               %95 = arith.andi %93, %94 : i1

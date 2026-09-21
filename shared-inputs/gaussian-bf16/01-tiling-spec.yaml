@@ -1,0 +1,8 @@
+version: "0.5"
+kernel: {name: _Z10ForwardSubPfS__driver}
+d2m_kernel:
+  elem_type: bf16
+  intent: {grid: [10, 10]}
+  tensors:
+    - {name: m, shape: [5120, 5120], role: transient, arg: 0}
+    - {name: a, shape: [5120, 5120], role: inout, arg: 1}

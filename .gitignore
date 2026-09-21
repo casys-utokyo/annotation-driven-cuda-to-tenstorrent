@@ -1,0 +1,18 @@
+# ttrt writes these into whatever directory it is run from.
+generated/
+ttrt-artifacts/
+query_results.json
+run_results.json
+read_results.json
+ttrt_report.xml
+# REPRO.sh's default output, and lower.sh's if pointed here.
+repro/
+out.ttm
+s1.mlir
+ttmetal.mlir
+# a100-hand-optimized: build output and bench results.
+a100-hand-optimized/jacobi_2d_pingpong
+a100-hand-optimized/gaussian_opt
+a100-hand-optimized/syrk_cublas
+a100-hand-optimized/results.json
+__pycache__/

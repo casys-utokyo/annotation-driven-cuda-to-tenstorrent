@@ -1,0 +1,8 @@
+version: "0.5"
+kernel: {name: _Z11syrk_kerneliiPfS__driver}
+d2m_kernel:
+  elem_type: bf16
+  intent: {grid: [10, 10]}
+  tensors:
+    - {name: A, shape: [3200, 3200], role: input, arg: 0}
+    - {name: C, shape: [3200, 3200], role: inout, arg: 1}

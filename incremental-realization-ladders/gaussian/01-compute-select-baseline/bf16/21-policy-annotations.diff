@@ -1,0 +1,11 @@
+--- ../front-2-tileflow.mlir
++++ front-2-annotated.mlir
+@@ -38,7 +38,7 @@
+           }
+         }
+       }
+-    }
++    } {task.streaming_granularity = #task.streaming_granularity<row>}
+   }
+   return
+ }

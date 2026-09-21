@@ -1,0 +1,16 @@
+--- front-3-realized.mlir
++++ front-3-realized.mlir
+@@ -36,11 +36,11 @@
+             %10 = tileplan.temporal_for (%arg8) in (0, 100, 1) iter_args(%arg9 = %2) -> (!d2mtile.tile<bf16>) {
+               %14 = affine.apply #map5(%arg8, %arg3)
+               %15 = affine.apply #map2(%arg8)
+-              %16 = tileflow.frame_delivery %0 source_core(%8, %14) source_slice(%9, %15) multicast(%c0, %arg3, %c10_3, %c1) shape(1, 1) : !tileplan.shard_view -> !tileflow.frame<!d2mtile.tile<bf16>>
++              %16 = tileflow.frame_delivery %0 source_core(%8, %14) source_slice(%9, %15) multicast(%c0, %arg3, %c10_3, %c1) shape(1, 1) {task.buffer_depth = 2 : i64} : !tileplan.shard_view -> !tileflow.frame<!d2mtile.tile<bf16>>
+               %17 = tileflow.frame_at %16 at(%c0_4, %c0_4) : !tileflow.frame<!d2mtile.tile<bf16>> -> !d2mtile.tile<bf16>
+               %18 = affine.apply #map5(%arg8, %arg3)
+               %19 = affine.apply #map2(%arg8)
+-              %20 = tileflow.frame_delivery %0 source_core(%5, %18) source_slice(%6, %19) multicast(%arg2, %c0_5, %c1_6, %c10_7) shape(1, 1) : !tileplan.shard_view -> !tileflow.frame<!d2mtile.tile<bf16>>
++              %20 = tileflow.frame_delivery %0 source_core(%5, %18) source_slice(%6, %19) multicast(%arg2, %c0_5, %c1_6, %c10_7) shape(1, 1) {task.buffer_depth = 2 : i64} : !tileplan.shard_view -> !tileflow.frame<!d2mtile.tile<bf16>>
+               %21 = tileflow.frame_at %20 at(%c0_8, %c0_8) : !tileflow.frame<!d2mtile.tile<bf16>> -> !d2mtile.tile<bf16>
+               %22 = d2mtile.matmul_block %21, %17 acc %arg9 block [1, 1, 1] {transpose = true} : !d2mtile.tile<bf16>
+               tileplan.yield %22 : !d2mtile.tile<bf16>

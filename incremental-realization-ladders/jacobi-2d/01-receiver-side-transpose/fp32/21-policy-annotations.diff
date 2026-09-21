@@ -1,0 +1,11 @@
+--- front-2-tileflow.mlir
++++ front-2-semantic.mlir
+@@ -80,7 +80,7 @@
+             }
+           }
+         }
+-      }
++      } {task.streaming_granularity = #task.streaming_granularity<col>}
+     }
+     return
+   }

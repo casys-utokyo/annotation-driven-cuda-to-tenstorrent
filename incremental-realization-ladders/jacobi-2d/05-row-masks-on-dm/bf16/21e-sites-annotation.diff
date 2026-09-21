@@ -1,0 +1,20 @@
+--- front-2-conversions.mlir
++++ front-2-sites.mlir
+@@ -54,7 +54,7 @@
+               %18 = tileflow.roll %17 axis row by 1 : !d2mtile.tile<bf16>
+               %19 = tileflow.transpose %18 : !d2mtile.tile<bf16>
+               %20 = tileflow.row_mask symbols() set #set1 : !tileflow.mask<bf16>
+-              %21 = tileflow.transpose %16 {tileflow.conversion_site = #tileflow.conversion_site<receiver>} : !d2mtile.tile<bf16>
++              %21 = tileflow.transpose %16 {tileflow.conversion_site = #tileflow.conversion_site<sender>} : !d2mtile.tile<bf16>
+               %22 = tileflow.row_copy %18 with %21 active(%20) source_map #map7 symbols() {tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<bf16>
+               %23 = tileflow.transpose %22 : !d2mtile.tile<bf16>
+               %24 = tileflow.transfer %1 core_dims(%arg2, %arg3, %arg7, %arg8, %arg2, %arg3) core_symbols() core_map #map10 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map11 core_boundary clamp tile_boundary clamp : !tileplan.shard_view -> !d2mtile.tile<bf16>
+@@ -63,7 +63,7 @@
+               %27 = tileflow.roll %26 axis row by -1 : !d2mtile.tile<bf16>
+               %28 = tileflow.transpose %27 : !d2mtile.tile<bf16>
+               %29 = tileflow.row_mask symbols() set #set : !tileflow.mask<bf16>
+-              %30 = tileflow.transpose %24 {tileflow.conversion_site = #tileflow.conversion_site<receiver>} : !d2mtile.tile<bf16>
++              %30 = tileflow.transpose %24 {tileflow.conversion_site = #tileflow.conversion_site<sender>} : !d2mtile.tile<bf16>
+               %31 = tileflow.row_copy %27 with %30 active(%29) source_map #map4 symbols() {tileflow.realization_engine = #tileflow.engine<dm>} : !d2mtile.tile<bf16>
+               %32 = tileflow.transpose %31 : !d2mtile.tile<bf16>
+               %33 = tileflow.local_read %1 tile_dims(%arg2, %arg3, %arg7, %arg8) tile_symbols() tile_map #map3 tile_boundary in_bounds : !tileplan.shard_view -> !d2mtile.tile<bf16>

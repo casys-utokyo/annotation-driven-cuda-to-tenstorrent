@@ -1,0 +1,11 @@
+--- front-1-tileplan.mlir
++++ front-1-scheduled.mlir
+@@ -65,7 +65,7 @@
+             }
+           }
+         } {loop_name = "t"}
+-      }
++      } {tileplan.schedule = [#tileplan.place_transient_guard<producer_writes_abi = 1, consumer_writes_abi = 0, keep = producer>]}
+     }
+     return
+   }
